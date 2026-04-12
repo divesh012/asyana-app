@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Aasanya Foundation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='HomePageCss.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="header-left">
+        <img src="{{ url_for('static', filename='aasanya/logo main.jpeg') }}" class="site-logo">
+        <div>
+            <h1>Aasanya Foundation</h1>
+            <p class="tagline">Section 8 Non Profit Company</p>
+        </div>
+    </div>
+</header>
+
+<nav class="navbar">
+
+    <div class="nav-left">
+        <!-- Hamburger -->
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+        <!-- Menu -->
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+
+            <li class="dropdown">
+                <a href="#">Programs ▾</a>
+                <ul class="dropdown-content">
+                    <li><a href="#education">Scholarships</a></li>
+                    <li><a href="#girlsHostel">Free Coaching</a></li>
+                    <li><a href="#oldAgeHome">Old Age Home</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="#">Connect ▾</a>
+                <ul class="dropdown-content">
+                    <li><a href="#">WhatsApp</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Donate -->
+    <div class="nav-right">
+        <button class="pay-btn donate-btn">Donate ₹1</button>
+    </div>
+
+</nav>
+
+
+<!-- MAIN -->
+<!-- MAIN -->
+<main class="content">
+    <h2>Welcome to Aasanya Foundation</h2>
+
+    <p>
+        We work to strengthen communities, uphold human dignity,
+        and create a just and equal society through education,
+        social reform, and compassion.
+    </p>
+
+    <div class="image-container">
+        <!-- ✅ FIX: use url_for + remove spaces in filename -->
+        <img src="{{ url_for('static', filename='aasanya/1stimg.jpeg') }}" 
+             alt="Aasanya Foundation">
+    </div>
+</main>
+
+
+<!-- ABOUT -->
+<section id="about" class="about-section fade-in">
+
+    <h2>About Us</h2>
+
+    <p class="about-intro">
+        Aasanya Foundation is a non-profit initiative working to uplift students
+        and communities through free education, one-to-one guidance, and social awareness.
+        Based in Yavatmal, we focus on empowering those who cannot afford quality learning.
+    </p>
+
+    <!-- TAGS -->
+    <div class="about-tags">
+        <span class="tag">Free Coaching</span>
+        <span class="tag">One-to-One Guidance</span>
+        <span class="tag">Student Empowerment</span>
+        <span class="tag">Social Equality</span>
+    </div>
+
+    <!-- GALLERY -->
+    <div class="about-gallery">
+
+        <!-- Image 1 -->
+        <div class="about-card fade-in">
+            <img src="{{ url_for('static', filename='aasanya/coaching_and_guidance.jpeg') }}">
+            <p>One-to-one guidance and free coaching for students</p>
+        </div>
+
+        <!-- Image 2 -->
+        <div class="about-card fade-in">
+            <img src="{{ url_for('static', filename='aasanya/guidence_by_admbedkar.jpeg') }}">
+            <p>Following the thoughts and teachings of great social reformers and leaders.</p>
+        </div>
+
+        <!-- Image 3 -->
+        <div class="about-card fade-in">
+            <img src="{{ url_for('static', filename='aasanya/buddha_pic.jpeg') }}">
+            <p>
+                Town-to-town mentorship programs supporting underprivileged students with guidance and hope.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- PROGRAMS -->
+<section id="programs" class="programs-section fade-in">
+
+    <!-- Program 1 -->
+    <div class="program fade-in" id="education">
+        <div class="program-text">
+            <h2>Education Scholarships</h2>
+            <p>
+                We provide monthly scholarships to bright but underprivileged students
+                pursuing elite courses like IIT and MBBS. Our aim is to empower the next generation of leaders.
+            </p>
+
+            <a href="https://chat.whatsapp.com/Iw4DHDZp8XvL4Db5iU58mo"
+               target="_blank" class="whatsapp-btn">
+                Join WhatsApp Group
+            </a>
+        </div>
+
+        <div class="program-image">
+            <!-- ✅ FIXED -->
+            <img src="{{ url_for('static', filename='aasanya/coaching_competitative_exam.jpeg') }}">
+        </div>
+    </div>
+
+
+    <!-- Program 2 -->
+    <div class="program reverse fade-in" id="girlsHostel">
+
+        <div class="program-image">
+            <!-- ✅ FIXED -->
+            <img src="{{ url_for('static', filename='aasanya/free_education_yavatmal.jpeg') }}">
+        </div>
+
+        <div class="program-text">
+            <h2>Free Coaching & Guidance</h2>
+            <p>
+                Aasanya Foundation provides free coaching classes and career guidance in Yavatmal
+                for students who cannot afford paid education.
+                We believe financial limits should never stop learning.
+            </p>
+
+            <a href="https://chat.whatsapp.com/Iw4DHDZp8XvL4Db5iU58mo"
+               target="_blank" class="whatsapp-btn">
+                Join WhatsApp Group
+            </a>
+        </div>
+    </div>
+
+
+    <!-- Program 3 -->
+    <div class="program fade-in" id="oldAgeHome">
+
+        <div class="program-text">
+            <h2>Old Age Home</h2>
+            <p>
+                An old age home in Belora offers free food and shelter to elderly individuals
+                with no family support, helping them live with dignity.
+            </p>
+
+            <a href="https://chat.whatsapp.com/Iw4DHDZp8XvL4Db5iU58mo"
+               target="_blank" class="whatsapp-btn">
+                Join WhatsApp Group
+            </a>
+        </div>
+
+        <div class="program-image">
+            <!-- ✅ FIXED -->
+            <img src="{{ url_for('static', filename='aasanya/oldAgeHome.jpeg') }}">
+        </div>
+    </div>
+
+</section>
+
+<!-- DONATE -->
+<section id="donate" class="donate-section">
+
+    <!-- LEFT TEXT -->
+    <div class="donate-text">
+        <h2>🌱 One Rupee. One Heart. One Change.</h2>
+
+        <p>
+            ₹1 Can Change a Life <br><br>
+            Alone, ₹1 feels small.
+            Together, it becomes hope.
+        </p>
+
+        <p>
+            Education for students <br>
+            Dignity for elders <br>
+            Help in medical emergencies
+        </p>
+
+        <p><strong>You don’t need to be rich to help. You just need to care.</strong></p>
+
+        <a href="https://chat.whatsapp.com/Iw4DHDZp8XvL4Db5iU58mo" 
+           target="_blank" class="whatsapp-share">
+            Share on WhatsApp
+        </a>
+
+        <p class="donation-count">
+            People joined this movement: <strong>1,248+</strong>
+        </p>
+    </div>
+
+    <!-- RIGHT QR -->
+    <div class="donate-qr fade-in">
+
+        <!-- ✅ FIXED IMAGE PATH -->
+        <img src="{{ url_for('static', filename='aasanya/QRcode.jpeg') }}" alt="Scan to donate">
+
+        <p class="scan-text">Scan to Donate</p>
+
+        <!-- ✅ RAZORPAY BUTTON (IMPORTANT: class only, no id) -->
+        <button class="pay-btn upi-pay-btn">
+            Donate Now
+        </button>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <p>
+            Aasanya Foundation is a 
+            <strong>Section 8 (Not for Profit) Company</strong>
+        </p>
+
+        <p>
+            <strong>12AB Registration:</strong> AAXCA2072A24PN01
+            &nbsp; | &nbsp;
+            <strong>80G Registration:</strong> AAXCA2072Q24PN02
+        </p>
+
+        <p>
+            <strong>Company Registration No:</strong> 385218
+        </p>
+
+    </div>
+
+</footer>
+
+<!-- RAZORPAY -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+// 🔥 SCROLL ANIMATION
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+        }
+    });
+}, { threshold: 0.2 });
+
+document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
+
+function toggleMenu() {
+    document.getElementById("navMenu").classList.toggle("active");
+}
+
+// 🔥 PAYMENT (FIXED FOR MULTIPLE BUTTONS)
+document.querySelectorAll(".pay-btn").forEach(btn => {
+    btn.onclick = function () {
+
+        fetch("/create-order")
+        .then(res => res.json())
+        .then(order => {
+
+            var options = {
+                key: "{{ key_id }}",
+                amount: order.amount,
+                currency: order.currency,
+                name: "Aasanya Foundation",
+                description: "Donation",
+                order_id: order.id,
+
+                handler: function () {
+                    alert("Payment Successful!");
+                }
+            };
+
+            var rzp = new Razorpay(options);
+            rzp.open();
+        });
+    };
+});
+</script>
+
+</body>
+</html>
