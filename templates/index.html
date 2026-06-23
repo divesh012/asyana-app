@@ -53,7 +53,9 @@
 
     <!-- Donate -->
     <div class="nav-right">
-        <button class="pay-btn donate-btn">Donate ₹1</button>
+        <button class="pay-btn donate-btn" id="donateBtn">
+            Donate ₹1
+        </button>
     </div>
 
 </nav>
@@ -237,7 +239,7 @@
         <p class="scan-text">Scan to Donate</p>
 
         <!-- ✅ RAZORPAY BUTTON (IMPORTANT: class only, no id) -->
-        <button class="pay-btn upi-pay-btn">
+        <button class="pay-btn donate-btn" id="donateBtn">
             Donate Now
         </button>
 
@@ -273,6 +275,7 @@
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
 <script>
+
 // 🔥 SCROLL ANIMATION
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -284,36 +287,101 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
 
+
+// 🔥 MOBILE MENU
 function toggleMenu() {
     document.getElementById("navMenu").classList.toggle("active");
 }
 
-// 🔥 PAYMENT (FIXED FOR MULTIPLE BUTTONS)
+
+// 🔥 RAZORPAY PAYMENT
 document.querySelectorAll(".pay-btn").forEach(btn => {
-    btn.onclick = function () {
 
-        fetch("/create-order")
-        .then(res => res.json())
-        .then(order => {
+    btn.addEventListener("click", async function () {
 
-            var options = {
+        try {
+
+            const response = await fetch("/create-order", {
+                method: "POST"
+            });
+
+            const order = await response.json();
+
+            console.log("Order Response:", order);
+
+            if (!order.success) {
+            alert("Failed to create order: " + (order.message || "Unknown error"));
+            return;
+                }
+
+            const options = {
                 key: "{{ key_id }}",
                 amount: order.amount,
                 currency: order.currency,
                 name: "Aasanya Foundation",
                 description: "Donation",
-                order_id: order.id,
+                order_id: order.order_id,
 
-                handler: function () {
-                    alert("Payment Successful!");
+                handler: async function (response) {
+
+                    try {
+
+                        const verify = await fetch("/payment-success", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify(response)
+                        });
+
+                        const result = await verify.json();
+
+                        if (result.success) {
+                            alert("🎉 Thank you for your donation!");
+                        } else {
+                            alert("Payment verification failed.");
+                        }
+
+                    } catch (err) {
+                        console.error(err);
+                        alert("Verification error.");
+                    }
+                },
+
+                prefill: {
+                    name: "",
+                    email: "",
+                    contact: ""
+                },
+
+                theme: {
+                    color: "#3399cc"
                 }
             };
 
-            var rzp = new Razorpay(options);
+            const rzp = new Razorpay(options);
+
+            rzp.on("payment.failed", function (response) {
+
+                alert(
+                    "Payment Failed\n\n" +
+                    response.error.description
+                );
+
+                console.error(response.error);
+            });
+
             rzp.open();
-        });
-    };
+
+        } catch (error) {
+            console.error(error);
+            alert("Unable to initiate payment.");
+        }
+
+    });
+
 });
+
 </script>
 
 </body>
