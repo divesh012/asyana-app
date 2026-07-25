@@ -1,0 +1,604 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* ================= ROOT ================= */
+:root {
+    --brand-color: rgb(65, 105, 225);
+    --brand-dark:rgb(11, 38, 71);
+}
+
+/* ================= GLOBAL ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", sans-serif;
+}
+
+/* ================= HEADER ================= */
+.header {
+    background: linear-gradient(135deg, var(--brand-color), var(--brand-dark));
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.site-logo {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: white;
+    padding: 4px;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* MENU */
+.nav-menu {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.nav-menu li {
+    position: relative;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+/* DROPDOWN */
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    
+    top: 100%;   /* PERFECT ALIGN */
+
+    left: 0;
+    background: white;
+    min-width: 180px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    border-radius: 6px;
+    padding: 5px 0;
+}
+
+/* REMOVE BULLETS */
+.dropdown-content li {
+    list-style: none;   /* 🔥 removes dots */
+}
+
+/* LINKS STYLE */
+.dropdown-content a {
+    display: block;
+    padding: 10px 15px;
+    color: #333;
+    text-decoration: none;
+}
+
+/* HOVER EFFECT */
+.dropdown-content a:hover {
+    background: #f5f5f5;
+}
+
+/* SHOW DROPDOWN ON HOVER (PC) */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* HAMBURGER */
+.menu-icon {
+    display: none;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+/* BUTTON */
+.donate-btn {
+    background: var(--brand-color);
+    color: white;
+    padding: 10px 22px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Main page */
+
+.about-initiative{
+    width:100%;
+    max-width:1150px;
+    margin:90px auto;
+    padding:0 20px;
+    font-family:'Inter',sans-serif;
+}
+
+.small-title{
+    color:#00875A;
+    font-size:14px;
+    font-weight:700;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+}
+
+.about-initiative h1{
+    margin-top:18px;
+    font-size:54px;
+    font-weight:800;
+    color:#13294B;
+    line-height:1.15;
+    margin-bottom:35px;
+}
+
+.about-initiative p{
+    font-size:20px;
+    color:#4B5B73;
+    line-height:1.8;
+    margin-bottom:28px;
+    max-width:1080px;
+}
+
+.join-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:18px;
+    margin-top:20px;
+    background:#101828;
+    color:#fff;
+    text-decoration:none;
+    padding:18px 30px;
+    border-radius:40px;
+    font-size:18px;
+    font-weight:600;
+    transition:.3s ease;
+}
+
+.join-btn span{
+    font-size:24px;
+    transition:.3s;
+}
+
+.join-btn:hover{
+    background:#1B263B;
+    transform:translateY(-3px);
+}
+
+.join-btn:hover span{
+    transform:translateX(6px);
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+.about-initiative{
+    margin:60px auto;
+}
+
+.about-initiative h1{
+    font-size:38px;
+}
+
+.about-initiative p{
+    font-size:17px;
+}
+
+.join-btn{
+    width:100%;
+    justify-content:center;
+    text-align:center;
+    font-size:16px;
+}
+
+}
+
+/*Footer*/
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+    .about-section {
+        padding: 60px 20px;
+    }
+
+    .about-intro {
+        font-size: 1rem;
+    }
+}
+
+/* images */
+/* ===========================
+        IMAGE GALLERY
+=========================== */
+
+.gallery-section{
+    width:100%;
+    padding:90px 8%;
+    background:#f8fafc;
+}
+
+.gallery-title{
+    text-align:center;
+    font-size:42px;
+    color:#0f172a;
+    font-weight:700;
+    margin-bottom:12px;
+}
+
+.gallery-subtitle{
+    text-align:center;
+    color:#64748b;
+    font-size:18px;
+    margin-bottom:50px;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+}
+
+.gallery img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+    border-radius:18px;
+    cursor:pointer;
+    transition:.4s;
+    box-shadow:0 12px 30px rgba(0,0,0,.10);
+}
+
+.gallery img:hover{
+    transform:translateY(-8px) scale(1.03);
+    box-shadow:0 20px 40px rgba(0,0,0,.18);
+}
+
+@media(max-width:768px){
+
+.gallery-section{
+    padding:60px 20px;
+}
+
+.gallery-title{
+    font-size:32px;
+}
+
+.gallery-subtitle{
+    font-size:16px;
+}
+
+.gallery{
+    grid-template-columns:1fr;
+}
+
+.gallery img{
+    height:220px;
+}
+
+}
+
+
+/* ================= PROGRAMS ================= */
+/* ================= PROGRAMS ================= */
+.programs-section {
+    padding: 80px 10%;
+}
+
+/* EACH BLOCK */
+.program {
+    display: flex;
+    align-items: center;          /* 🔥 vertical alignment fix */
+    justify-content: space-between;
+    gap: 50px;
+    margin-bottom: 80px;
+}
+
+/* REVERSE */
+.program.reverse {
+    flex-direction: row-reverse;
+}
+
+/* TEXT */
+.program-text {
+    flex: 1;
+    max-width: 550px;             /* 🔥 control width */
+}
+
+.program-text h2 {
+    color: var(--brand-color);
+    margin-bottom: 12px;
+}
+
+.program-text p {
+    line-height: 1.6;
+    color: #444;
+}
+
+/* IMAGE CONTAINER */
+.program-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+/* IMAGE */
+.program-image img {
+    width: 100%;
+    max-width: 420px;
+    height: 260px;                /* 🔥 same height for all */
+    object-fit: cover;            /* 🔥 prevents stretch */
+    border-radius: 14px;
+
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+/* HOVER */
+.program-image img:hover {
+    transform: scale(1.05);
+}
+
+/* ================= BUTTON ================= */
+.whatsapp-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 22px;
+    background: var(--brand-color);
+    color: white;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+    background: var(--brand-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* ================= MOBILE FIX ================= */
+@media (max-width: 768px) {
+
+    .program,
+    .program.reverse {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .program-text {
+        max-width: 100%;
+    }
+
+    .program-image img {
+        height: auto;
+        max-width: 100%;
+    }
+}
+/* ================= DONATE SECTION ================= */
+.donate-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 80px 10%;
+    background: linear-gradient(135deg, #fff3ee, #ffe7dc);
+    gap: 50px;
+}
+
+/* LEFT TEXT */
+.donate-text {
+    flex: 1;
+}
+
+.donate-text h2 {
+    color: var(--brand-color);
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.donate-text p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 12px;
+    color: #444;
+}
+
+/* RIGHT QR */
+.donate-qr {
+    text-align: center;
+}
+
+/* QR IMAGE */
+.donate-qr img {
+    width: 240px;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.donate-qr img:hover {
+    transform: scale(1.05);
+}
+
+/* TEXT */
+.scan-text {
+    margin: 12px 0;
+    font-weight: bold;
+    color: var(--brand-color);
+}
+
+
+/* ================= DONATE BUTTON ================= */
+.upi-pay-btn {
+    display: inline-block;
+    padding: 14px 28px;
+    background: var(--brand-color);
+    color: white;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.upi-pay-btn:hover {
+    background: var(--brand-dark);
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+
+.about-card a{
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.view-btn{
+    margin-top: 15px;
+    padding: 10px 22px;
+    background: #2e7d32;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.view-btn:hover{
+    background: #1b5e20;
+    transform: translateY(-2px);
+}
+
+
+/* ================= WHATSAPP SHARE ================= */
+.whatsapp-share {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+
+    padding: 12px 24px;
+    background: #25D366;
+    color: white;
+
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+
+    transition: all 0.3s ease;
+}
+
+.whatsapp-share:hover {
+    background: #1ebe5d;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.whatsapp-share:active {
+    transform: scale(0.96);
+}
+
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+
+    .donate-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 60px 20px;
+    }
+
+    .donate-qr img {
+        width: 200px;
+    }
+}
+
+/* ================= FOOTER ================= */
+.footer {
+    background: var(--brand-dark);
+    color: white;
+    padding: 20px 10%;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+
+    .menu-icon {
+        display: block;
+    }
+
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 10px;
+        background: white;
+        width: 220px;
+        padding: 15px;
+        border-radius: 8px;
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .about-gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .program {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .donate-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+}
