@@ -53,9 +53,7 @@
 
     <!-- Donate -->
     <div class="nav-right">
-        <button class="pay-btn donate-btn" id="donateBtn">
-            Donate ₹1
-        </button>
+        <button class="pay-btn donate-btn">Donate ₹10</button>
     </div>
 
 </nav>
@@ -65,6 +63,8 @@
 <!-- MAIN -->
 <main class="content">
     <h2>Welcome to Aasanya Foundation</h2>
+
+     <p>शिक्षा सबसे बड़ा उपहार है—आइए, मिलकर किसी का भविष्य संवारें।</p>
 
     <p>
         We work to strengthen communities, uphold human dignity,
@@ -91,36 +91,45 @@
         Based in Yavatmal, we focus on empowering those who cannot afford quality learning.
     </p>
 
+
     <!-- TAGS -->
     <div class="about-tags">
-        <span class="tag">Free Coaching</span>
+        <span class="tag">Student Scholership</span>
         <span class="tag">One-to-One Guidance</span>
-        <span class="tag">Student Empowerment</span>
+        <span class="tag">Old age home</span>
         <span class="tag">Social Equality</span>
     </div>
 
     <!-- GALLERY -->
     <div class="about-gallery">
 
-        <!-- Image 1 -->
         <div class="about-card fade-in">
-            <img src="{{ url_for('static', filename='aasanya/coaching_and_guidance.jpeg') }}">
-            <p>One-to-one guidance and free coaching for students</p>
-        </div>
+    <a href="{{ url_for('scholarship') }}">
+        <img src="{{ url_for('static', filename='aasanya/coaching_and_guidance.jpeg') }}" alt="Scholarship">
+        <p>Support A Child's Education</p>
+
+        <button class="view-btn">View More</button>
+    </a>
+</div>
 
         <!-- Image 2 -->
-        <div class="about-card fade-in">
-            <img src="{{ url_for('static', filename='aasanya/guidence_by_admbedkar.jpeg') }}">
-            <p>Following the thoughts and teachings of great social reformers and leaders.</p>
-        </div>
+<div class="about-card fade-in">
+    <a href="{{ url_for('old_age') }}">
+        <img src="{{ url_for('static', filename='aasanya/oldage.jpeg') }}" alt="Old Age Home">
+            <p>Support Senior Citizens Today</p>
+        <button class="view-btn">View More</button>
+    </a>
+</div>
 
         <!-- Image 3 -->
-        <div class="about-card fade-in">
-            <img src="{{ url_for('static', filename='aasanya/buddha_pic.jpeg') }}">
-            <p>
-                Town-to-town mentorship programs supporting underprivileged students with guidance and hope.
-            </p>
-        </div>
+<div class="about-card fade-in">
+    <a href="{{ url_for('aasanya_bhavan') }}">
+        <img src="{{ url_for('static', filename='aasanya/bhavan1.jpeg') }}" alt="Aasanya Bhavan">
+        <p>Aasanya Bhavan – A safe and comfortable home providing care, support, and dignity to elderly residents.</p>
+
+        <button class="view-btn">View More</button>
+    </a>
+</div>
 
     </div>
 
@@ -136,7 +145,9 @@
             <p>
                 We provide monthly scholarships to bright but underprivileged students
                 pursuing elite courses like IIT and MBBS. Our aim is to empower the next generation of leaders.
+                
             </p>
+            <p>शिक्षा सबसे बड़ा उपहार है—आइए, मिलकर किसी का भविष्य संवारें।</p>
 
             <a href="https://chat.whatsapp.com/Iw4DHDZp8XvL4Db5iU58mo"
                target="_blank" class="whatsapp-btn">
@@ -167,6 +178,8 @@
                 We believe financial limits should never stop learning.
             </p>
 
+            <p>"आपका ₹10 भी किसी विद्यार्थी के सपनों को नई उड़ान दे सकता है।</p>
+
             <a href="https://chat.whatsapp.com/Iw4DHDZp8XvL4Db5iU58mo"
                target="_blank" class="whatsapp-btn">
                 Join WhatsApp Group
@@ -185,6 +198,8 @@
                 with no family support, helping them live with dignity.
             </p>
 
+            <p>आपकी एक छोटी-सी मदद, किसी बुज़ुर्ग को भोजन, दवा और सम्मान से जीने का अवसर दे सकती है।</p>
+
             <a href="https://chat.whatsapp.com/Iw4DHDZp8XvL4Db5iU58mo"
                target="_blank" class="whatsapp-btn">
                 Join WhatsApp Group
@@ -199,6 +214,7 @@
 
 </section>
 
+
 <!-- DONATE -->
 <section id="donate" class="donate-section">
 
@@ -207,8 +223,8 @@
         <h2>🌱 One Rupee. One Heart. One Change.</h2>
 
         <p>
-            ₹1 Can Change a Life <br><br>
-            Alone, ₹1 feels small.
+            ₹10 Can Change a Life <br><br>
+            Alone, ₹01 feels small.
             Together, it becomes hope.
         </p>
 
@@ -239,7 +255,7 @@
         <p class="scan-text">Scan to Donate</p>
 
         <!-- ✅ RAZORPAY BUTTON (IMPORTANT: class only, no id) -->
-        <button class="pay-btn donate-btn" id="donateBtn">
+        <button class="pay-btn upi-pay-btn">
             Donate Now
         </button>
 
@@ -273,115 +289,117 @@
 
 <!-- RAZORPAY -->
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
 <script>
+document.addEventListener("DOMContentLoaded", function () {
 
-// 🔥 SCROLL ANIMATION
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add("show");
-        }
-    });
-}, { threshold: 0.2 });
+    // Scroll Animation
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+            }
+        });
+    }, { threshold: 0.2 });
 
-document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
+    document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
 
+    // Mobile Menu
+    window.toggleMenu = function () {
+        document.getElementById("navMenu").classList.toggle("active");
+    };
 
-// 🔥 MOBILE MENU
-function toggleMenu() {
-    document.getElementById("navMenu").classList.toggle("active");
-}
+    // Razorpay Payment
+    const buttons = document.querySelectorAll(".pay-btn");
 
+    console.log("Buttons Found:", buttons.length);
 
-// 🔥 RAZORPAY PAYMENT
-document.querySelectorAll(".pay-btn").forEach(btn => {
+    buttons.forEach(function(btn){
 
-    btn.addEventListener("click", async function () {
+        btn.addEventListener("click", function(e){
 
-        try {
+            e.preventDefault();
 
-            const response = await fetch("/create-order", {
-                method: "POST"
-            });
+            console.log("Donate Button Clicked");
 
-            const order = await response.json();
+            fetch("/create-order")
+            .then(function(response){
 
-            console.log("Order Response:", order);
-
-            if (!order.success) {
-            alert("Failed to create order: " + (order.message || "Unknown error"));
-            return;
+                if(!response.ok){
+                    throw new Error("Unable to create order");
                 }
 
-            const options = {
-                key: "{{ key_id }}",
-                amount: order.amount,
-                currency: order.currency,
-                name: "Aasanya Foundation",
-                description: "Donation",
-                order_id: order.order_id,
+                return response.json();
+            })
 
-                handler: async function (response) {
+            .then(function(order){
 
-                    try {
+                console.log(order);
 
-                        const verify = await fetch("/payment-success", {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json"
+                var options = {
+
+                    key: "{{ key_id }}",
+
+                    amount: order.amount,
+
+                    currency: order.currency,
+
+                    name: "Aasanya Foundation",
+
+                    description: "Donation",
+
+                    order_id: order.id,
+
+                    handler: function (response) {
+
+                        fetch("/payment-success",{
+
+                            method:"POST",
+
+                            headers:{
+                                "Content-Type":"application/json"
                             },
-                            body: JSON.stringify(response)
+
+                            body:JSON.stringify(response)
+
+                        })
+
+                        .then(res=>res.json())
+
+                        .then(data=>{
+
+                            alert(data.message);
+
                         });
 
-                        const result = await verify.json();
+                    },
 
-                        if (result.success) {
-                            alert("🎉 Thank you for your donation!");
-                        } else {
-                            alert("Payment verification failed.");
-                        }
-
-                    } catch (err) {
-                        console.error(err);
-                        alert("Verification error.");
+                    theme:{
+                        color:"#0d6efd"
                     }
-                },
 
-                prefill: {
-                    name: "",
-                    email: "",
-                    contact: ""
-                },
+                };
 
-                theme: {
-                    color: "#3399cc"
-                }
-            };
+                var rzp = new Razorpay(options);
 
-            const rzp = new Razorpay(options);
+                rzp.open();
 
-            rzp.on("payment.failed", function (response) {
+            })
 
-                alert(
-                    "Payment Failed\n\n" +
-                    response.error.description
-                );
+            .catch(function(error){
 
-                console.error(response.error);
+                console.error(error);
+
+                alert(error.message);
+
             });
 
-            rzp.open();
-
-        } catch (error) {
-            console.error(error);
-            alert("Unable to initiate payment.");
-        }
+        });
 
     });
 
 });
-
 </script>
 
 </body>
