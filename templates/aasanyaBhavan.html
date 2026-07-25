@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='asanyaBhavan.css') }}">
+</head>
+<body>
+<!-- HEADER -->
+<header class="header">
+    <div class="header-left">
+        <img src="{{ url_for('static', filename='aasanya/logo main.jpeg') }}" class="site-logo">
+        <div>
+            <h1>Aasanya Foundation</h1>
+            <p class="tagline">Section 8 Non Profit Company</p>
+        </div>
+    </div>
+</header>
+
+<nav class="navbar">
+
+    <div class="nav-left">
+        <!-- Hamburger -->
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+        <!-- Menu -->
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+
+            <li class="dropdown">
+                <a href="#">Programs ▾</a>
+                <ul class="dropdown-content">
+                    <li><a href="#education">Scholarships</a></li>
+                    <li><a href="#girlsHostel">Free Coaching</a></li>
+                    <li><a href="#oldAgeHome">Old Age Home</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="#">Connect ▾</a>
+                <ul class="dropdown-content">
+                    <li><a href="#">WhatsApp</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Donate -->
+    <div class="nav-right">
+        <button class="pay-btn donate-btn">Donate ₹1</button>
+    </div>
+
+</nav>
+
+<!-- ABOUT AASANYA BHAVAN -->
+<section class="about-initiative">
+
+    <span class="small-title">ABOUT THIS INITIATIVE</span>
+
+    <h1>Aasanya Bhavan</h1>
+
+    <p>
+     Aasanya Bhawan Yavatmal, Maharashtra provides
+Multipurpose Hall,
+ Girls,Boys hostel ,
+ ⁠Conference Hall,
+⁠Library and
+⁠Training Centre for students
+
+    </p>
+
+    <p>
+     Aasanya Bhavan is not just a building but a centre for social and economic development of underprivileged sections of the society. 
+Plz donate generously and participate in Pay Back to Society program.
+    </p>
+
+    <p>हात पुढे करा, कारण तुमच्या मदतीची कोणीतरी मनापासून वाट पाहत आहे.</p>
+
+     
+       class="join-btn">
+        Join Aasanya Bhavan WhatsApp Group
+        <span>→</span>
+    </a>
+
+</section>
+
+
+<section class="gallery-section">
+
+    <h2 class="gallery-title">Our Activities</h2>
+    <p class="gallery-subtitle">
+        Every contribution helps us create a better future for students.
+    </p>
+
+    <div class="gallery">
+
+        <img src="{{ url_for('static', filename='aasanya/bhavan.jpeg') }}" alt="bhavan">
+        <img src="{{ url_for('static', filename='aasanya/img2.jpg') }}" alt="">
+        <img src="{{ url_for('static', filename='aasanya/img3.jpg') }}" alt="">
+        <img src="{{ url_for('static', filename='aasanya/img4.jpg') }}" alt="">
+        <img src="{{ url_for('static', filename='aasanya/img5.jpg') }}" alt="">
+        <img src="{{ url_for('static', filename='aasanya/img6.jpg') }}" alt="">
+        <img src="{{ url_for('static', filename='aasanya/img7.jpg') }}" alt="">
+        <img src="{{ url_for('static', filename='aasanya/img8.jpg') }}" alt="">
+        <img src="{{ url_for('static', filename='aasanya/img9.jpg') }}" alt="">
+        <img src="{{ url_for('static', filename='aasanya/img10.jpg') }}" alt="">
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <p>
+            Aasanya Foundation is a 
+            <strong>Section 8 (Not for Profit) Company</strong>
+        </p>
+
+        <p>
+            <strong>12AB Registration:</strong> AAXCA2072A24PN01
+            &nbsp; | &nbsp;
+            <strong>80G Registration:</strong> AAXCA2072Q24PN02
+        </p>
+
+        <p>
+            <strong>Company Registration No:</strong> 385218
+        </p>
+
+    </div>
+
+</footer>
+
+<!-- RAZORPAY -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+// 🔥 SCROLL ANIMATION
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+        }
+    });
+}, { threshold: 0.2 });
+
+document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
+
+function toggleMenu() {
+    document.getElementById("navMenu").classList.toggle("active");
+}
+
+// 🔥 PAYMENT (FIXED FOR MULTIPLE BUTTONS)
+document.querySelectorAll(".pay-btn").forEach(btn => {
+    btn.onclick = function () {
+
+        fetch("/create-order")
+        .then(res => res.json())
+        .then(order => {
+
+            var options = {
+                key: "{{ key_id }}",
+                amount: order.amount,
+                currency: order.currency,
+                name: "Aasanya Foundation",
+                description: "Donation",
+                order_id: order.id,
+
+                handler: function () {
+                    alert("Payment Successful!");
+                }
+            };
+
+            var rzp = new Razorpay(options);
+            rzp.open();
+        });
+    };
+});
+</script>
+
+</body>
+</html>

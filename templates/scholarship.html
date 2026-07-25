@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='scholar.css') }}">
+
+</head>
+<body>
+    <!-- HEADER -->
+<header class="header">
+    <div class="header-left">
+        <img src="{{ url_for('static', filename='aasanya/logo main.jpeg') }}" class="site-logo">
+        <div>
+            <h1>Aasanya Foundation</h1>
+            <p class="tagline">Section 8 Non Profit Company</p>
+        </div>
+    </div>
+</header>
+
+<nav class="navbar">
+
+    <div class="nav-left">
+        <!-- Hamburger -->
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+        <!-- Menu -->
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+
+            <li class="dropdown">
+                <a href="#">Programs ▾</a>
+                <ul class="dropdown-content">
+                    <li><a href="#education">Scholarships</a></li>
+                    <li><a href="#girlsHostel">Free Coaching</a></li>
+                    <li><a href="#oldAgeHome">Old Age Home</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="#">Connect ▾</a>
+                <ul class="dropdown-content">
+                    <li><a href="#">WhatsApp</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Donate -->
+    <div class="nav-right">
+        <button class="pay-btn donate-btn">Donate ₹1</button>
+    </div>
+
+</nav>
+
+<section class="about-initiative">
+
+    <span class="small-title">ABOUT THIS INITIATIVE</span>
+
+    <h1>Education Scholarships</h1>
+
+    <p>
+        We provide monthly scholarships to bright but underprivileged students
+        pursuing elite courses like IIT and MBBS. Our aim is to empower the
+        next generation of leaders by removing financial barriers to quality
+        education.
+    </p>
+
+    <p>
+        Each scholarship covers tuition support, study materials and living
+        costs, and is paired with mentorship so students stay focused on
+        academic excellence and personal growth.
+    </p>
+
+    <P> आपकी छोटी-सी मदद किसी की पूरी दुनिया बदल सकती है।</P>
+
+    <P>₹1 आपके लिए छोटा हो सकता है, लेकिन किसी ज़रूरतमंद के लिए उम्मीद की शुरुआत बन सकता है।</P>
+
+    <a href="https://chat.whatsapp.com/Iw4DHDZp8XvL4Db5iU58mo" class="join-btn">
+        Join Education Scholarship WhatsApp Group
+        <span>→</span>
+    </a>
+
+</section>
+
+<!-- IMAGE GALLERY -->
+<section class="gallery-section">
+
+    <h2 class="gallery-title">Our Activities</h2>
+    <p class="gallery-subtitle">
+        Every contribution helps us create a better future for students.
+    </p>
+
+    <div class="gallery">
+
+        <img src="{{ url_for('static', filename='aasanya/as1.jpeg') }}" alt="">
+        <img src="{{ url_for('static', filename='aasanya/as2.jpeg') }}" alt="">
+        <img src="{{ url_for('static', filename='aasanya/as3.jpeg') }}" alt="">
+        <img src="{{ url_for('static', filename='aasanya/as4.jpeg') }}" alt="">
+        <img src="{{ url_for('static', filename='aasanya/as5.jpeg') }}" alt="">
+        <img src="{{ url_for('static', filename='aasanya/as6.jpeg') }}" alt="">
+        <img src="{{ url_for('static', filename='aasanya/as7.jpeg') }}" alt="">
+        <img src="{{ url_for('static', filename='aasanya/as8.jpeg') }}" alt="">
+        <img src="{{ url_for('static', filename='aasanya/as9.jpeg') }}" alt="">
+        <img src="{{ url_for('static', filename='aasanya/as10.jpeg') }}" alt="">
+        <img src="{{ url_for('static', filename='aasanya/as11.jpeg') }}" alt="">
+        <img src="{{ url_for('static', filename='aasanya/as12.jpeg') }}" alt="">
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <p>
+            Aasanya Foundation is a 
+            <strong>Section 8 (Not for Profit) Company</strong>
+        </p>
+
+        <p>
+            <strong>12AB Registration:</strong> AAXCA2072A24PN01
+            &nbsp; | &nbsp;
+            <strong>80G Registration:</strong> AAXCA2072Q24PN02
+        </p>
+
+        <p>
+            <strong>Company Registration No:</strong> 385218
+        </p>
+
+    </div>
+
+</footer>
+
+<!-- RAZORPAY -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+// 🔥 SCROLL ANIMATION
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+        }
+    });
+}, { threshold: 0.2 });
+
+document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
+
+function toggleMenu() {
+    document.getElementById("navMenu").classList.toggle("active");
+}
+
+// 🔥 PAYMENT (FIXED FOR MULTIPLE BUTTONS)
+document.querySelectorAll(".pay-btn").forEach(btn => {
+    btn.onclick = function () {
+
+        fetch("/create-order")
+        .then(res => res.json())
+        .then(order => {
+
+            var options = {
+                key: "{{ key_id }}",
+                amount: order.amount,
+                currency: order.currency,
+                name: "Aasanya Foundation",
+                description: "Donation",
+                order_id: order.id,
+
+                handler: function () {
+                    alert("Payment Successful!");
+                }
+            };
+
+            var rzp = new Razorpay(options);
+            rzp.open();
+        });
+    };
+});
+</script>
+
+
+
+</body>
+</html>
