@@ -1,7 +1,7 @@
 /* ================= ROOT ================= */
 :root {
-    --brand-color: rgb(221, 91, 44);
-    --brand-dark: rgb(190, 70, 30);
+    --brand-color: rgb(65, 105, 225);
+    --brand-dark:rgb(11, 38, 71);
 }
 
 /* ================= GLOBAL ================= */
@@ -265,7 +265,7 @@ body {
 }
 
 /* ================= PROGRAMS ================= */
-/* ================= PROGRAMS ================= */
+
 .programs-section {
     padding: 80px 10%;
 }
@@ -367,7 +367,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 80px 10%;
-    background: linear-gradient(135deg, #fff3ee, #ffe7dc);
+    background: linear-gradient(135deg, #c2bae5, #626ad0);
     gap: 50px;
 }
 
@@ -431,6 +431,31 @@ body {
     background: var(--brand-dark);
     transform: scale(1.05);
     box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+
+.about-card a{
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.view-btn{
+    margin-top: 15px;
+    padding: 10px 22px;
+    background: #2e7d32;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.view-btn:hover{
+    background: #1b5e20;
+    transform: translateY(-2px);
 }
 
 
